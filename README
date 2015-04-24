@@ -1,10 +1,11 @@
 Test Suite Benchmark
 
-Tests Minitest, RSpec, Bacon and Riot. Might add more later.
+Tests Minitest, RSpec, Bacon, Cutest and Riot. Might add more later.
 
   $ ruby bench.rb
 
-  > Minitest: 0.12666666666666668
-  > RSpec: 0.2333333333333333
-  > Bacon: 0.09666666666666668
-  > Riot: 0.11333333333333334
+  > Bacon: 0.037 0.021
+  > Cutest: 0.040 0.023
+  > Minitest: 0.087 0.049
+  > Riot: 0.047 0.027
+  > RSpec: 0.123 0.069

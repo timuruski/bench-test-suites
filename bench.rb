@@ -1,10 +1,11 @@
 #! /usr/bin/env ruby
 
 SUITES = {
-  'Minitest' => 'ruby spec/minitest_spec.rb',
-  'RSpec'    => 'rspec spec/rspec_spec.rb',
   'Bacon'    => 'bacon -q spec/bacon_spec.rb',
-  'Riot'     => 'ruby spec/riot_spec.rb'
+  'Cutest'   => 'cutest spec/cutest_spec.rb',
+  'Minitest' => 'ruby spec/minitest_spec.rb',
+  'Riot'     => 'ruby spec/riot_spec.rb',
+  'RSpec'    => 'rspec spec/rspec_spec.rb'
 }
 PATTERN = /([0-9.]+) real +([0-9.]+) user +([0-9.]+) sys/
 COUNT = 5
@@ -20,6 +21,12 @@ SUITES.each do |name, cmd|
   real_avg, user_avg, sys_avg = times.map { |ts|
     ts.inject(0,&:+) / ts.length }
 
-  puts "#{name}: #{real_avg}"
+  real_std, user_std, sys_std = times.map { |ts|
+    mean = ts.inject(0,&:+) / ts.length
+    var = ts.inject { |t| (t - mean) ** 2 } / ts.length
+    Math.sqrt var
+  }
+
+  puts "#{name}: #{'%.3f' % real_avg} #{'%.3f' % real_std}"
   # puts "#{name}: #{real_avg} real #{user_avg} user #{sys_avg} sys"
 end
