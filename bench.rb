@@ -8,7 +8,10 @@ SUITES = {
   'RSpec'    => 'rspec spec/rspec_spec.rb'
 }
 PATTERN = /([0-9.]+) real +([0-9.]+) user +([0-9.]+) sys/
-COUNT = 5
+COUNT = 10
+
+puts format "%8s %8s %8s", 'Suite', 'Avg real', 'Std dev'
+puts format "-" * (3 * 8 + 2)
 
 SUITES.each do |name, cmd|
   times = Array.new(COUNT) {
@@ -27,6 +30,5 @@ SUITES.each do |name, cmd|
     Math.sqrt var
   }
 
-  puts "#{name}: #{'%.3f' % real_avg} #{'%.3f' % real_std}"
-  # puts "#{name}: #{real_avg} real #{user_avg} user #{sys_avg} sys"
+  puts format "%8s %8.3f %8.3f", name, real_avg, real_std
 end

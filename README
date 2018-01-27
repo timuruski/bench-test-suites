@@ -4,6 +4,16 @@ Tests Minitest, RSpec, Bacon, Cutest and Riot. Might add more later.
 
   $ ruby bench.rb
 
+     Suite Avg real  Std dev
+  --------------------------
+     Bacon    0.077    0.043
+    Cutest    0.070    0.039
+  Minitest    0.057    0.032
+      Riot    0.040    0.023
+     RSpec    0.123    0.069
+
+Previous results:
+
   > Bacon: 0.037 0.021
   > Cutest: 0.040 0.023
   > Minitest: 0.087 0.049
